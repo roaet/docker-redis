@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf
 #change ports as needed from 6379 to ...
 RUN echo "port 6380" > /etc/redis/sentinel.conf
-RUN echo "sentinel monitor mymaster 192.168.8.128 6379 1" >> /etc/redis/sentinel.conf
+RUN echo "sentinel monitor mymaster 192.168.8.128 80 1" >> /etc/redis/sentinel.conf
 RUN echo "sentinel down-after-milliseconds mymaster 5000" >> /etc/redis/sentinel.conf
 RUN echo "sentinel failover-timeout mymaster 180000" >> /etc/redis/sentinel.conf
 RUN echo "sentinel parallel-syncs mymaster 1" >> /etc/redis/sentinel.conf
